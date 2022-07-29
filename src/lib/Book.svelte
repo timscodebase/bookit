@@ -11,10 +11,10 @@
 	<BookHeader {title} />
 
 	<Splitpanes theme="level-up-split">
-		<Pane size={$bookit_state.nav === 'VISIBLE' ? '15' : '0'}>
+		<Pane size={$bookit_state.nav === 'VISIBLE' ? 15 : 0}>
 			<BookNav />
 		</Pane>
-		<Pane size={$bookit_state.nav === 'VISIBLE' ? '85' : '100'}>
+		<Pane size={$bookit_state.nav === 'VISIBLE' ? 85 : 100}>
 			<slot />
 		</Pane>
 	</Splitpanes>

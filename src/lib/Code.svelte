@@ -3,7 +3,7 @@
 	import SideBarHeading from './elements/SideBarHeading.svelte';
 	import { bookit_state } from './state';
 
-	$: selected_title = $bookit_state?.selected_frame?.title;
+	$: selected_title = $bookit_state?.selected_frame;
 	$: selected_raw = $bookit_state?.loaded?.raw;
 
 	let code: { [name: string]: string } = {};
@@ -19,7 +19,7 @@
 			);
 			let start_index_bracket = selected_raw.indexOf('>', start_index);
 			let end_index = selected_raw.indexOf('</Frame>', start_index);
-			code[current_title] = selected_raw.substring(start_index_bracket + 1, end_index);
+			code[encodeURI(current_title)] = selected_raw.substring(start_index_bracket + 1, end_index);
 			last_index = selected_raw.indexOf('<Frame', end_index);
 		}
 	}

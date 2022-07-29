@@ -1,9 +1,9 @@
-<script>var _a, _b;
+<script>var _a;
 import BookIcon from './BookIcon.svelte';
 import SideBarHeading from './elements/SideBarHeading.svelte';
 import { bookit_state } from './state';
-$: selected_title = (_a = $bookit_state === null || $bookit_state === void 0 ? void 0 : $bookit_state.selected_frame) === null || _a === void 0 ? void 0 : _a.title;
-$: selected_raw = (_b = $bookit_state === null || $bookit_state === void 0 ? void 0 : $bookit_state.loaded) === null || _b === void 0 ? void 0 : _b.raw;
+$: selected_title = $bookit_state === null || $bookit_state === void 0 ? void 0 : $bookit_state.selected_frame;
+$: selected_raw = (_a = $bookit_state === null || $bookit_state === void 0 ? void 0 : $bookit_state.loaded) === null || _a === void 0 ? void 0 : _a.raw;
 let code = {};
 let last_index = 0;
 $: if (selected_raw) {
@@ -13,7 +13,7 @@ $: if (selected_raw) {
         let current_title = selected_raw.substring(title_prop_index, selected_raw.indexOf('"', title_prop_index));
         let start_index_bracket = selected_raw.indexOf('>', start_index);
         let end_index = selected_raw.indexOf('</Frame>', start_index);
-        code[current_title] = selected_raw.substring(start_index_bracket + 1, end_index);
+        code[encodeURI(current_title)] = selected_raw.substring(start_index_bracket + 1, end_index);
         last_index = selected_raw.indexOf('<Frame', end_index);
     }
 }
