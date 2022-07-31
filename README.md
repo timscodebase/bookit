@@ -1,10 +1,7 @@
-![Gangsta Boo](./static/icon.png)
-
-# Bookit
-
-bookit.leveluptutorials.com
+# 👻 Bookit 👻
 
 [Demo](https://bookit.leveluptutorials.com/book)
+Docs (coming soon)
 
 ## The least spooky way to build your components.
 
@@ -14,8 +11,10 @@ A new Story environment with a different approach. Finely tuned to work directly
 
 ### Why it's dope
 
+- Easy
 - Build for Svelte Kit
 - No webpack, or extra build process
 - Integrated into your app
 - Themeable
+- Use your real data
 - Simple

@@ -5,13 +5,18 @@
 	import { bookit_state } from './state';
 
 	export let title = 'Bookit';
+	let innerWidth: number;
+
+	$: open_nav_width = innerWidth > 500 ? 15 : 100;
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div class="book-wrapper">
 	<BookHeader {title} />
 
 	<Splitpanes theme="level-up-split">
-		<Pane size={$bookit_state.nav === 'VISIBLE' ? 15 : 0}>
+		<Pane size={$bookit_state.nav === 'VISIBLE' ? open_nav_width : 0}>
 			<BookNav />
 		</Pane>
 		<Pane size={$bookit_state.nav === 'VISIBLE' ? 85 : 100}>

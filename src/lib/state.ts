@@ -1,10 +1,15 @@
 import { writable } from 'svelte/store';
 
 // The main store that keeps track of all Bookit's state
+// Bookit's state includes everything needed for the entire app to function
+
+// Helper
 const IS_SERVER: boolean = typeof window === 'undefined';
 
 type BookitInterfaceStatus = 'VISIBLE' | 'HIDDEN';
 
+// Some store state is kept in local storage for persistance
+// This is just a helper to make sure we can use local storage and initialize if we can
 function local_storage_checker<T>(initial: T, key: string): T {
 	if (!IS_SERVER) {
 		const local_storage_data = localStorage.getItem(key);
@@ -17,18 +22,20 @@ function local_storage_checker<T>(initial: T, key: string): T {
 	return initial;
 }
 
+// Custom store wrapper
 const newBookit = () => {
 	// Initialize Nav based on local storage
 	const initial_nav = local_storage_checker<BookitInterfaceStatus>('VISIBLE', 'BOOKIT_NAV');
 	const initial_code = local_storage_checker<BookitInterfaceStatus>('HIDDEN', 'BOOKIT_CODE');
 
 	const { subscribe, update, set } = writable<{
-		canvasBg: string;
-		selected_frame: any;
-		code: BookitInterfaceStatus;
-		nav: BookitInterfaceStatus;
-		loaded: {};
+		canvasBg: string; // The background color of the canvas
+		selected_frame: any; // The selected frame
+		code: BookitInterfaceStatus; // The status of the code interface ie if it's hidden or not
+		nav: BookitInterfaceStatus; // The status of the nav interface ie if it's hidden or not
+		loaded: {}; // The story that is loaded
 		tree: {
+			// All loaded stories based on their parent and title props
 			[key: string]: {
 				title: string;
 				parent: string;
@@ -48,10 +55,13 @@ const newBookit = () => {
 		subscribe,
 		update,
 		set,
+		// Initializes our state beyond the default state with all info about found stories
 		init: async (data) => {
+			// data is an async function that runs the getTree function
 			const tree = await data();
 			update((prev) => ({ ...prev, tree }));
 		},
+
 		toggleCode: () => {
 			update((prev) => {
 				const new_code = prev.code === 'VISIBLE' ? 'HIDDEN' : 'VISIBLE';
@@ -71,25 +81,3 @@ const newBookit = () => {
 };
 
 export const bookit_state = newBookit();
-
-// State //
-
-// Tree[]
-// - id aka importpath x
-// - Name x
-// - Parent x
-// Canvas
-// Bg
-// Checker
-// Selected Story ID
-// Loaded Stories[]
-// - Title
-// - Parent
-// - Id
-// - Raw Code
-// - Code without Bookit Imports
-// - FrameBg
-// - FrameDash
-// - FramePadding
-// - FrameSize
-// - Controls?
