@@ -9,4 +9,4 @@
 	<slot />
 </Book>
 
-<Toy theme="dark" register={{ bookit_state }} />
+<Toy theme="dark" top="0vh" register={{ bookit_state }} />

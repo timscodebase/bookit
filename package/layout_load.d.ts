@@ -1,6 +1,1 @@
-export declare function layoutLoad({ params }: {
-    params?: {
-        title: string;
-        parent: string;
-    };
-}): Promise<{}>;
+export declare function layoutLoad(): Promise<{}>;

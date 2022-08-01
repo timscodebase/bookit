@@ -1,6 +1,10 @@
 import { writable } from 'svelte/store';
 // The main store that keeps track of all Bookit's state
+// Bookit's state includes everything needed for the entire app to function
+// Helper
 const IS_SERVER = typeof window === 'undefined';
+// Some store state is kept in local storage for persistance
+// This is just a helper to make sure we can use local storage and initialize if we can
 function local_storage_checker(initial, key) {
     if (!IS_SERVER) {
         const local_storage_data = localStorage.getItem(key);
@@ -13,6 +17,7 @@ function local_storage_checker(initial, key) {
     }
     return initial;
 }
+// Custom store wrapper
 const newBookit = () => {
     // Initialize Nav based on local storage
     const initial_nav = local_storage_checker('VISIBLE', 'BOOKIT_NAV');
@@ -29,7 +34,9 @@ const newBookit = () => {
         subscribe,
         update,
         set,
+        // Initializes our state beyond the default state with all info about found stories
         init: async (data) => {
+            // data is an async function that runs the getTree function
             const tree = await data();
             update((prev) => ({ ...prev, tree }));
         },
@@ -50,23 +57,3 @@ const newBookit = () => {
     };
 };
 export const bookit_state = newBookit();
-// State //
-// Tree[]
-// - id aka importpath x
-// - Name x
-// - Parent x
-// Canvas
-// Bg
-// Checker
-// Selected Story ID
-// Loaded Stories[]
-// - Title
-// - Parent
-// - Id
-// - Raw Code
-// - Code without Bookit Imports
-// - FrameBg
-// - FrameDash
-// - FramePadding
-// - FrameSize
-// - Controls?

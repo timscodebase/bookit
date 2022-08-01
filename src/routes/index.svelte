@@ -3,7 +3,7 @@
 </script>
 
 <div class="wrapper">
-	<h1>Bookit</h1>
+	<h1>👻 Bookit 👻</h1>
 	<h4>The least spooky way to build your components.</h4>
 	<h5>Pronounced Boo-Kits</h5>
 	<a href="/book">Bookit Demo</a>
@@ -14,7 +14,6 @@
 		<li>Integrated into your app</li>
 		<li>Themeable</li>
 		<li>Simple</li>
-		<li>iFrame Isolation</li>
 	</ul>
 </div>
 
@@ -33,7 +32,7 @@
 		text-transform: uppercase;
 		display: inline-block;
 		font-family: Exo, sans-serif;
-		font-size: clamp(7rem, 20vw, 12.5rem);
+		font-size: clamp(3rem, 10vw, 12.5rem);
 		font-weight: 900;
 		margin-bottom: 70px;
 	}

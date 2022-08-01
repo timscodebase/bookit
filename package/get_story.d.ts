@@ -1,7 +1,8 @@
-export declare function getStory({ parent, title }: {
-    parent: any;
-    title: any;
-}): Promise<{
+interface GetStory {
+    parent: string;
+    title: string;
+}
+export declare function getStory({ parent, title }: GetStory): Promise<{
     title: string;
     parent: string;
     icon: string;
@@ -13,3 +14,4 @@ export declare function load({ params }: {
         params: any;
     };
 };
+export {};
