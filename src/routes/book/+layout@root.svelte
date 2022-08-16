@@ -1,12 +1,7 @@
-<script lang="ts" context="module">
-	import Toy from '@leveluptuts/svelte-toy/Toy.svelte';
-	import { bookit_state } from '$lib/state';
-	import { layoutLoad as load, Book } from '$lib';
-	export { load };
+<script lang="ts">
+	import { Book } from '$lib';
 </script>
 
 <Book>
 	<slot />
 </Book>
-
-<Toy theme="dark" top="0vh" register={{ bookit_state }} />

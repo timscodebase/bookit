@@ -1,10 +1,6 @@
-<script context="module" lang="ts">
-	import { Bookit, load } from '$lib';
-	export { load };
-</script>
-
 <script lang="ts">
-	export let params;
+	import { Bookit } from '$lib';
+	export let data;
 </script>
 
-<Bookit {params} />
+<Bookit params={data.params} />
