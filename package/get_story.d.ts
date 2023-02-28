@@ -10,8 +10,6 @@ export declare function getStory({ parent, title }: GetStory): Promise<{
 export declare function load({ params }: {
     params: any;
 }): {
-    props: {
-        params: any;
-    };
+    params: any;
 };
 export {};

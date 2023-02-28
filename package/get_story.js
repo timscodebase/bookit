@@ -15,8 +15,6 @@ export async function getStory({ parent, title }) {
 }
 export function load({ params }) {
     return {
-        props: {
-            params
-        }
+        params
     };
 }
